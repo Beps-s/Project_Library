@@ -8,7 +8,7 @@ const getAllObjects = (req, res) => {
 		if (err) throw err;
 		objects = result
 		res.render('index', {
-			objects: objects
+			objects: objects, loggedIn: req.session.loggedin
 		})
 	})
 };
