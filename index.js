@@ -14,7 +14,14 @@ app.engine('hbs', hbs.engine({
 	extname: 'hbs',
 	defaultLayout: 'main',
 	layoutsDir: __dirname + '/views/layouts/'
-}));
+}))
+
+// setup static assets directory
+app.use(express.static('assets'))
+
+const objectsRoutes = require('./routes/objects'); // import objects route
+
+app.use('/', objectsRoutes);
 
 // app start point
 app.listen(8080, () => {

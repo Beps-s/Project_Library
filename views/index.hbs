@@ -1,1 +1,14 @@
-<h1>Homepage</h1>
+{{#objects}}
+<div class="col">
+    <div class="card h-100">
+      <img src="{{image}}"  class="card-img-top">
+      <div class="card-body text-center">
+        <h5 class="card-title">{{Name}}</h5>
+        <p>{{Author}}</p>
+      </div>
+      <div class="card-footer text-center">
+          <button type="button" class="btn btn-primary">Borrow</button>
+      </div>
+    </div>
+</div>
+{{/objects}}
