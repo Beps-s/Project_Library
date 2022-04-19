@@ -1,11 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>VOCO Library</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	<style>
 		.card-img-top {
@@ -15,6 +16,7 @@
 		}
 	</style>
 </head>
+
 <body>
 	<!-- Header nav -->
 	<header>
@@ -22,11 +24,19 @@
 			<div class="container-fluid">
 				<h1 class="text-white bi bi-book"> VOCO Library</h1>
 				{{#if loggedIn}}
-				<form action="/logout" method="post">
-					<button type="submit" class="btn btn-light bi bi-person-circle">Logout</button>
-				</form>
+				<div class="dropdown dropstart">
+					<button type="button" class="btn btn-light bi bi-person-circle dropdown-toggle"
+						data-bs-toggle="dropdown"> Account</button>
+					<div class="dropdown-menu">
+						<button class="dropdown-item" href="/profile">My Profile</button>
+						<form action="/logout" method="post">
+							<button class="dropdown-item" type="submit">Logout</button>
+						</form>
+					</div>
+				</div>
 				{{else}}
-				<button class="btn btn-light bi bi-person-circle" data-bs-toggle="modal" data-bs-target="#loginModal"> Login</button>
+				<button class="btn btn-light bi bi-person-circle" data-bs-toggle="modal" data-bs-target="#loginModal">
+					Login</button>
 				{{/if}}
 			</div>
 		</nav>
@@ -37,37 +47,41 @@
 		<div class="container mt-4">
 			<div class="row row-cols-1 row-cols-md-4 g-4">
 				{{{body}}}
-			</div>	
+			</div>
 		</div>
 
 		<!-- Login modal -->
-		<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="loginModal" data-bs-backdrop="static" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Enter your account details</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<form action="/auth" method="post">
-					<div class="modal-body">
-						<div class="mb-3">
-							<label for="email" class="form-label">Email address</label>
-							<input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
-						</div>
-						<div class="mb-3">
-							<label for="password" class="form-label">Password</label>
-							<input type="password" class="form-control" name="password" id="password" placeholder="********">
-						</div>
+					<div class="modal-header">
+						<h5 class="modal-title">Enter your account details</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary">Log In</button>
-					</div>
-				</form>
+					<form action="/auth" method="post">
+						<div class="modal-body">
+							<div class="mb-3">
+								<label for="email" class="form-label">Email address</label>
+								<input type="email" class="form-control" name="email" id="email"
+									placeholder="name@example.com">
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">Password</label>
+								<input type="password" class="form-control" name="password" id="password"
+									placeholder="********">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">Log In</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</main>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
 </body>
+
 </html>

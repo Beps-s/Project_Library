@@ -44,8 +44,12 @@ app.engine('hbs', hbs.engine({
 app.use(express.static('assets'))
 
 const objectsRoutes = require('./routes/objects'); // import objects route
+const loansRoutes = require('./routes/loans'); // import loans route
 
 app.use('/', objectsRoutes);
+app.use('/profile', loansRoutes);
+
+var sess;
 
 // login auth
 app.post('/auth', function(request, response) {
@@ -61,8 +65,10 @@ app.post('/auth', function(request, response) {
 			// If the account exists
 			if (results.length > 0) {
 				// Authenticate the user
+				sess = request.session;
 				request.session.loggedin = true;
 				request.session.username = email;
+				//console.log(sess)
 				// Redirect to home page
 				response.redirect('/');
 			} else {
@@ -79,6 +85,7 @@ app.post('/auth', function(request, response) {
 app.post('/logout', function(req, res) {
 	req.session.destroy();
 	res.redirect('/');
+	console.log(sess)
 });
 
 // app start point
