@@ -22,8 +22,23 @@ app.set('view engine', 'hbs');
 app.engine('hbs', hbs.engine({
 	extname: 'hbs',
 	defaultLayout: 'main',
-	layoutsDir: __dirname + '/views/layouts/'
-}))
+	layoutsDir: __dirname + '/views/layouts/',
+	helpers: {
+		// Function to do basic mathematical operation in handlebar
+		math: function(lvalue, operator, rvalue) {
+			lvalue = parseFloat(lvalue);
+			rvalue = parseFloat(rvalue);
+			return {
+				"+": lvalue + rvalue,
+				"-": lvalue - rvalue,
+				"*": lvalue * rvalue,
+				"/": lvalue / rvalue,
+				"%": lvalue % rvalue
+			}[operator];},
+		sessionStatus: (req, res) => {
+			return req.session.loggedin
+		}
+}}));
 
 // setup static assets directory
 app.use(express.static('assets'))
