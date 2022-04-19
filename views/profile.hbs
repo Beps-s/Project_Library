@@ -1,22 +1,18 @@
-{{#objects}}
+{{#loans}}
 <div class="col">
   <div class="card h-100">
     <img src="{{Image}}" class="card-img-top">
     <div class="card-body text-center">
       <h5 id="title" class="card-title">{{Name}}</h5>
       <p>{{Author}}</p>
-      <p>Saadavus: {{math Amount "-" Loaned}} tk</p>
     </div>
     <div class="card-footer text-center">
-      {{#if login}}
-      <form action="/borrow" method="post">
+      <form action="/profile/return" method="post">
         <input type="hidden" name="UID" value={{UID}}>
-        <button type="submit" class="btn btn-primary">Borrow</button>
+        <input type="hidden" name="bk_id" value{{bk_id}}>
+        <button type="submit" class="btn btn-primary">Return</button>
       </form>
-      {{else}}
-      <p>Log in to borrow</p>
-      {{/if}}
     </div>
   </div>
 </div>
-{{/objects}}
+{{/loans}}

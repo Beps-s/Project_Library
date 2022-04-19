@@ -22,13 +22,13 @@
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
-				<h1 class="text-white bi bi-book"> VOCO Library</h1>
+				<a href="/" class="text-decoration-none"><h1 class="text-white bi bi-book"> VOCO Library</h1></a>
 				{{#if loggedIn}}
 				<div class="dropdown dropstart">
 					<button type="button" class="btn btn-light bi bi-person-circle dropdown-toggle"
 						data-bs-toggle="dropdown"> Account</button>
 					<div class="dropdown-menu">
-						<button class="dropdown-item" href="/profile">My Profile</button>
+						<a class="dropdown-item" href="/profile">My Profile</a>
 						<form action="/logout" method="post">
 							<button class="dropdown-item" type="submit">Logout</button>
 						</form>
@@ -79,9 +79,8 @@
 			</div>
 		</div>
 	</main>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
-</body>
-
 </html>

@@ -68,7 +68,7 @@ app.post('/auth', function(request, response) {
 				sess = request.session;
 				request.session.loggedin = true;
 				request.session.username = email;
-				//console.log(sess)
+				request.session.uid = results[0].UID
 				// Redirect to home page
 				response.redirect('/');
 			} else {
@@ -81,11 +81,31 @@ app.post('/auth', function(request, response) {
 		response.end();
 	}
 });
+
 // logout
-app.post('/logout', function(req, res) {
+app.post('/logout', (req, res) => {
 	req.session.destroy();
 	res.redirect('/');
-	console.log(sess)
+});
+
+// borrow objects
+app.post('/borrow', (req, res) => {
+	let book_id = parseInt(req.body.UID);
+	let user_id = req.session.uid;
+	con.query('UPDATE objects SET Loaned = Loaned + 1 WHERE UID = ?', [book_id])
+	con.query(`INSERT INTO loans (Start, End, Member_id, Book_id) VALUES (CURDATE(), date_add(CURDATE(), interval 14 day), '${user_id}', '${book_id}')`)
+	res.redirect('/');
+});
+
+// return objects
+app.post('/profile/return', (req, res) => {
+	let loan_id = parseInt(req.body.UID);
+	let bk_id = parseInt(req.body.bk_id)
+	let user_id = req.session.uid;
+	console.log(bk_id)
+	//con.query('UPDATE objects SET Loaned = Loaned - 1 WHERE UID = ?', [book_id])
+	//con.query(`DELETE FROM loans WHERE`)
+	res.redirect('/profile');
 });
 
 // app start point
