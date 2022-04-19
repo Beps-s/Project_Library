@@ -102,9 +102,9 @@ app.post('/profile/return', (req, res) => {
 	let loan_id = parseInt(req.body.UID);
 	let bk_id = parseInt(req.body.bk_id)
 	let user_id = req.session.uid;
-	console.log(bk_id)
-	//con.query('UPDATE objects SET Loaned = Loaned - 1 WHERE UID = ?', [book_id])
-	//con.query(`DELETE FROM loans WHERE`)
+	//console.log(bk_id)
+	con.query('UPDATE objects SET Loaned = Loaned - 1 WHERE UID = ?', [bk_id])
+	con.query(`DELETE FROM loans WHERE UID = ?`, [loan_id])
 	res.redirect('/profile');
 });
 
