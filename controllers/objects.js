@@ -9,7 +9,6 @@ const getAllObjects = (req, res) => {
 		if (err) throw err;
 		objects = result;
 		objects.forEach((object) => {object['login'] = sess.loggedin})
-		// objects.push({login: req.session.loggedin})
 		res.render('index', {
 			objects: objects, loggedIn: sess.loggedin
 		})
