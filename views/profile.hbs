@@ -1,3 +1,4 @@
+<h1>Borrowed books:</h1>
 {{#loans}}
 <div class="col">
   <div class="card h-100">
@@ -5,6 +6,7 @@
     <div class="card-body text-center">
       <h5 id="title" class="card-title">{{Name}}</h5>
       <p>{{Author}}</p>
+      <p>Return date: {{end}}</p>
     </div>
     <div class="card-footer text-center">
       <form action="/profile/return" method="post">

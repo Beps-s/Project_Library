@@ -6,6 +6,7 @@ const loansController = require('../controllers/loans');
 
 // use controller functions according to the route
 router.get('/', loansController.getAllLoans);
+router.post('/return', loansController.returnLoan)
 
 // export book router for using in default application file
 module.exports = router;
